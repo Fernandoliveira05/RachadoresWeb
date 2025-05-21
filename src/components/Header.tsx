@@ -3,11 +3,12 @@
   import styled from 'styled-components';
   import { COLORS, FONTS, BREAKPOINTS  } from '../constants/style';
   import logo from '../constants/assets/logo.svg';
-//   import home from '../constants/assets/icon_home.svg'
+  import home from '../constants/assets/icon_home.svg'
+  import perfil from '../constants/assets/Perfil.svg'
   import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
   const HeaderContainer = styled.header<{ backgroundColor: string; top?: string; left?: string }>`
-    background-color: COLORS.primary};
+    background-color: ${COLORS.white};
     padding: 30px;
     display: flex;
     justify-content: flex-start;
@@ -22,7 +23,7 @@
 
 
   const Logo = styled.img`
-    height: 10px;
+    height: 50px;
     margin-right: 10%;
 
     @media (max-width: ${BREAKPOINTS.mobile}) {
@@ -31,10 +32,27 @@
   `;
 
   const Home = styled.img`
-    height: 40px;
+    height: 35px;
 
     @media (max-width: ${BREAKPOINTS.mobile}) {
       display: none; 
+    }
+    transition: transform 0.1s ease-in-out;
+    &:hover {
+       transform: translateY(-5px);
+    }
+  `;
+
+    const Perfil = styled.img`
+    height: 30px;
+    margin-left: 75%;
+
+    @media (max-width: ${BREAKPOINTS.mobile}) {
+      display: none; 
+    }
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+       transform: translateY(-5px);
     }
   `;
 
@@ -113,7 +131,9 @@
 
     return (
       <HeaderContainer backgroundColor={backgroundColor}>
-        <Logo src={logo} alt="Originei Logo" />
+        <Home src={home} alt="Ícone de Casa"/>
+        <Logo src={logo} alt="Logo dos Rachadores" />
+        <Perfil src={perfil} alt="Ícone de Perfil" />
         <Nav>
         </Nav>
         <HamburgerIcon onClick={toggleMenu}>
