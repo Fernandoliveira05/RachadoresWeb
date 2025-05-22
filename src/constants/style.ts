@@ -8,13 +8,15 @@ export const COLORS = {
     header: '#FFFFFF', 
     box: '#32393F',
     darkGray: '#333',
-    head: '#32393F'
+    head: '#32393F', 
+    loginBG: '#281001'
   };
   
   export const FONTS = {
     primary: "'Roboto', sans-serif",
     secondary: "'Open Sans', sans-serif",
   };
+  
   
   export const BREAKPOINTS = {
     mobile: '600px',

@@ -160,7 +160,7 @@ const Header: React.FC<{ backgroundColor?: string }> = ({
   return (
     <HeaderContainer backgroundColor={backgroundColor}>
       <Home src={home} alt="Ícone de Casa" onClick={handleHomeClick} />
-      <Logo src={logo} alt="Logo dos Rachadores" onMouseOver={playSound}/>
+      <Logo src={logo} alt="Logo dos Rachadores" onClick={playSound}/>
       <Perfil src={perfil} alt="Ícone de Perfil" onClick={handlePerfilClick} />
       <Nav></Nav>
       <HamburgerIcon onClick={toggleMenu}>
