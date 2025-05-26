@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { COLORS, FONTS, BREAKPOINTS } from "../constants/style";
 import predio from "../constants/assets/predio.svg";
@@ -8,7 +8,6 @@ import bg from "../constants/assets/login_bkg.svg";
 
 const Button = styled.button`
   display: flex;
-  width: 35%;
   align-items: center;
   justify-content: space-between;
   background-color: ${COLORS.loginBG || '#333'}; 
@@ -20,8 +19,9 @@ const Button = styled.button`
   font-family: ${FONTS.primary};
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 5%;
-  
+
+  margin: 5% auto 0 auto; /* Centraliza horizontalmente */
+
   &:hover {
     background-color: ${COLORS.hoverLgn}; 
   }
@@ -33,45 +33,32 @@ const Button = styled.button`
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
+  width: 100vw;  // usa viewport width
+  height: 100vh;
   margin: 0;
   padding: 0;
-`;
-
-const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 60%;
-
-  label {
-    margin-left: -50%;
-    lign-self: flex-start;
-    margin-left: -90%; 
-  }
+  overflow: hidden;
 `;
 
 const SectionComFundo = styled.section`
+  flex: 2;
   background-color: ${COLORS.loginBG};
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
-
-  position: fixed;
-  top: 0;
+  position: relative;
   left: 0;
-
-  width: 40%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  z-index: 1; 
 
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  margin: 0;
+  padding: 0;
 
   @media (max-width: ${BREAKPOINTS.tablet}) {
     display: none;
@@ -79,18 +66,16 @@ const SectionComFundo = styled.section`
 `;
 
 const SectionBranca = styled.section`
-  margin-left: 40%;
-  width: 60%;
-  height: 100%;
+  flex: 3;
+  min-width: 350px; 
   background-color: white;
-  border-top-left-radius: 50%;
+  height: 100%;
+  border-top-left-radius: 2%;
+  margin-top: -5%; 
 
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: ${BREAKPOINTS.tablet}) {
-    display: none;
-  }
 
   h2 {
     color: ${COLORS.secondary};
@@ -107,21 +92,45 @@ const SectionBranca = styled.section`
   }
 
   input {
-    width: 90%; /* Subtrai margem/padding se necessário */
+    width: 90%;
     padding: 10px;
     font-size: 1rem;
-    border: 0px solid ${COLORS.secondary};
+    border: 0;
     border-radius: 15px;
     margin-top: 2px;
-    margin-bottom: 20px; /* Espaço consistente entre inputs */
-    box-sizing: border-box; /* Inclui padding no tamanho total */
+    margin-bottom: 20px;
+    box-sizing: border-box;
     font-family: ${FONTS.primary};
-    background-color: ${COLORS.inputBg};   
+    background-color: ${COLORS.inputBg};
+  }
+
+  a {
+  font-family: ${FONTS.primary}; 
+  color: ${COLORS.black}; 
+  margin-top: 7%; 
+  &:hover {
+    strong {
+    color: blue;
+    cursor: pointer;
+  }
+  }
+`;
+
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 60%;
+
+  label {
+    margin-left: -50%;
+    lign-self: flex-start;
+    margin-left: -90%; 
   }
 `;
 
 const Predio = styled.img`
-  height: 80%;
+  height: 70%;
   margin-right: -30%;
 
   animation: flutuar 3s ease-in-out infinite;
@@ -166,6 +175,7 @@ const Login: React.FC<{ backgroundColor?: string }> = () => {
           <label htmlFor="email">Senha</label>
           <input type="password" id="senha" name="senha" placeholder="Insira a sua senha aqui" />
            <Button>Fazer login</Button>
+           <a>Não tem uma conta? Faça cadastro <strong>aqui.</strong></a>
         </FormWrapper>
       </SectionBranca>
     </Container>

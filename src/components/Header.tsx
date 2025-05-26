@@ -20,7 +20,6 @@ const HeaderContainer = styled.header<{
   justify-content: flex-start;
   align-items: center;
   position: absolute;
-  z-index: 20;
   top: ${(props) => props.top || "0"};
   left: ${(props) => props.left || "0"};
   width: 100%;
