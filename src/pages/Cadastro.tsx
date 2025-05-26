@@ -39,14 +39,20 @@ const SectionComFundo = styled.section`
 const Lupa = styled.img`
   height: 50%;
   margin-right: 15%; 
-  cursor: pointer;
 
   @media (max-width: ${BREAKPOINTS.tablet}) {
     display: none;
   }
-  transition: transform 0.3s ease-in-out;
-  &:hover {
-    transform: translateY(-5px);
+  
+  animation: float 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 `;
 
